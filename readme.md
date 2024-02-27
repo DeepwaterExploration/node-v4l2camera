@@ -1,13 +1,13 @@
 # node-v4l2camera
 
-Capturing images from USB(UVC) webcam on linux machines.
+Capturing images from USB (UVC) cameras on linux machines
 
 ## Requirements
 
-- node >= 4.x
+- node >= 20.x
 - video4linux2 headers
-- c and c++ compiler with `-std=c11` and `-std=c++14`
-    - gcc >= 4.9
+- c and c++ compiler with `-std=c11` and `-std=c++17`
+    - gcc >= 11.4
 
 ## Install
 
@@ -17,7 +17,7 @@ On linux machines:
 npm install v4l2camera
 ```
 
-- package details: https://npmjs.org/package/v4l2camera
+- package details: https://www.npmjs.com/package/@dwe.ai/v4l2camera
 
 ## Usage
 
@@ -107,20 +107,13 @@ On linux machines:
 cd myproject
 mkdir -p node_modules
 cd node_modules
-git clone https://github.com/bellbind/node-v4l2camera.git v4l2camera
+git clone https://github.com/DeepWaterExploration/node-v4l2camera.git v4l2camera
 cd v4l2camera
 npm install
 cd ../..
 ```
 
 "build/Release/v4l2camera.node" is exist after the build.
-
-## Tested Environments
-
-- Ubuntu wily armhf on BeagleBone Black with USB Buffalo BSW13K10H
-- Ubuntu wily amd64 on Acer Aspire One with its screen facecam
-- [Travis-CI (build only)](https://travis-ci.org/bellbind/node-v4l2camera):
-  ![Build Status](https://travis-ci.org/bellbind/node-v4l2camera.svg)
 
 ## Licenses
 

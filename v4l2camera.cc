@@ -352,7 +352,17 @@ namespace {
     auto data = new uint8_t[size];
     std::copy(camera->head.start, camera->head.start + size, data);
     const auto flag = v8::ArrayBufferCreationMode::kInternalized;
-    auto buf = v8::ArrayBuffer::New(info.GetIsolate(), data, size, flag);
+    std::unique_ptr<v8::BackingStore> backing_store = v8::ArrayBuffer::NewBackingStore(
+        data,
+        size, 
+        [](void* data, size_t length, void* deleter_data) {
+            // Custom deleter code here. For example:
+            delete[] reinterpret_cast<uint8_t*>(data);
+        }, 
+        nullptr  // deleter_data if you have any, nullptr otherwise
+    );
+    auto buf = v8::ArrayBuffer::New(info.GetIsolate(), std::move(backing_store));
+    // auto buf = v8::ArrayBuffer::New(info.GetIsolate(), data, size, flag);
     auto array = v8::Uint8Array::New(buf, 0, size);
     info.GetReturnValue().Set(array);
   }
@@ -363,7 +373,17 @@ namespace {
     auto rgb = yuyv2rgb(camera->head.start, camera->width, camera->height);
     const auto size = camera->width * camera->height * 3;
     const auto flag = v8::ArrayBufferCreationMode::kInternalized;
-    auto buf = v8::ArrayBuffer::New(info.GetIsolate(), rgb, size, flag);
+    std::unique_ptr<v8::BackingStore> backing_store = v8::ArrayBuffer::NewBackingStore(
+        rgb, 
+        size, 
+        [](void* data, size_t length, void* deleter_data) {
+            // Custom deleter code here. For example:
+            delete[] reinterpret_cast<uint8_t*>(data);
+        }, 
+        nullptr  // deleter_data if you have any, nullptr otherwise
+    );
+    auto buf = v8::ArrayBuffer::New(info.GetIsolate(), std::move(backing_store));
+    // auto buf = v8::ArrayBuffer::New(info.GetIsolate(), rgb, size, flag);
     auto array = v8::Uint8Array::New(buf, 0, size);
     info.GetReturnValue().Set(array);
   }
