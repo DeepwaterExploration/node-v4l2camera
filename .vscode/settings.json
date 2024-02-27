@@ -1,0 +1,12 @@
+{
+    "C_Cpp.default.includePath": [
+        "/home/kunal/Documents/GitHub/node-v4l2camera/node_modules/nan"
+    ],
+    "files.associations": {
+        "array": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "string": "cpp"
+    }
+}

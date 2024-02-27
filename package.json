@@ -31,7 +31,7 @@
         "jpeg-js": "*"
     },
     "engines": {
-        "node": ">=10.0.0"
+        "node": ">=20.0.0"
     },
     "scripts": {
         "test": "node test.js",
@@ -42,7 +42,7 @@
         "android"
     ],
     "dependencies": {
-        "nan": "^2.14.0"
+        "nan": "^2.18.0"
     },
     "contributors": [
         "Tim Cameron Ryan <id@timryan.org> (https://github.com/tcr)",
